@@ -11,14 +11,14 @@
                 playerSelection = playerSelection.toLowerCase();
                 computerSelection = computerSelection.toLowerCase();
                 if(playerSelection === computerSelection) {return "It's a tie!"}
-                else if(playerSelection === 'Rock' && computerSelection === 'Scissors' ||
-                        playerSelection === 'Paper' && computerSelection === 'Rock'    ||
-                        playerSelection === 'Scissors' && computerSelection === 'Paper')
+                else if(playerSelection === 'rock' && computerSelection === 'scissors' ||
+                        playerSelection === 'paper' && computerSelection === 'rock'    ||
+                        playerSelection === 'scissors' && computerSelection === 'paper')
                 {
                     return `You win! ${playerSelection} beats ${computerSelection}`;
                 }
                 else {
-                    return `You lose! ${computerSelection} beats ${playerSelection}`;
+                    return `Computer wins! ${computerSelection} beats ${playerSelection}`;
                 }
             }
 
@@ -28,9 +28,24 @@
                 let computerWins = 0;
                 for(let round = 0; round < rounds; ++ round)
                 {
-                    playRound(prompt("Rock, paper, scissors?"), computerPlay());
+                    let roundWinner = playRound(prompt("Rock, paper, scissors?"), computerPlay());
+                    if(roundWinner.includes("You")) { ++playerWins;}
+                    else if(roundWinner.includes("Computer")) {++computerWins;}
+                    alert(roundWinner);
+                }
+
+                if(playerWins > computerWins) {
+                    alert("You win the game!");
+                }
+                else if(computerWins > playerWins) {
+                    alert("Computer wins the game");
+                }
+                else {
+                    alert("It's a tie! Good game.")
                 }
             }
+
+            game();
       </script>
 </head>
 <body>
